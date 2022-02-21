@@ -34,10 +34,10 @@ public class Allocation {
 	@Temporal(TemporalType.TIME)
 	private Date end;
 	
-	@Column(name = "course_id", nullable = false, unique = true)
+	@Column(name = "course_id", nullable = false)
 	private Long courseId;
 	
-	@Column(name = "professor_id",nullable = false, unique = true)
+	@Column(name = "professor_id",nullable = false)
 	private Long professorId;
 	
 	@ManyToOne(optional = false)
