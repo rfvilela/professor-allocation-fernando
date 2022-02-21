@@ -1,4 +1,4 @@
-package com.project.professor.allocation.entity;
+package com.project.professor.allocation.fernando.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

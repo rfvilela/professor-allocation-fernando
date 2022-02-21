@@ -1,4 +1,4 @@
-package com.project.professor.allocation.entity;
+package com.project.professor.allocation.fernando.entity;
 
 import java.time.DayOfWeek;
 import java.util.Date;
@@ -21,21 +21,24 @@ public class Allocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
+	
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date start;
+	
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date end;
 	
 	@Column(name = "course_id", nullable = false, unique = true)
 	private Long courseId;
+	
 	@Column(name = "professor_id",nullable = false, unique = true)
 	private Long professorId;
-	
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "professor_id", updatable = false, insertable = false, nullable = false)

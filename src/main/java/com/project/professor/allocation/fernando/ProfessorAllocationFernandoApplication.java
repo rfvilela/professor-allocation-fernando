@@ -1,4 +1,4 @@
-package com.project.professor.allocation;
+package com.project.professor.allocation.fernando;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
