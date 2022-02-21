@@ -21,7 +21,7 @@ public class Professor {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "department_id", updatable = false, insertable = false, nullable = false)
 	private Department depart;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -52,6 +52,14 @@ public class Professor {
 
 	public void setDepartmentId(Long departmentId) {
 		this.departmentId = departmentId;
+	}
+
+	public Department getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Department depart) {
+		this.depart = depart;
 	}
 
 }
