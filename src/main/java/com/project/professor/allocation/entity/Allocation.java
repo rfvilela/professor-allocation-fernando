@@ -115,6 +115,13 @@ public class Allocation {
 		this.curso = curso;
 	}
 
+	@Override
+	public String toString() {
+		return "Allocation [id=" + id + ", day=" + day + ", start=" + start + ", end=" + end + ", courseId=" + courseId
+				+ ", professorId=" + professorId + ", prof=" + prof + ", curso=" + curso + "]";
+	}
+	
+
 
 
 }
