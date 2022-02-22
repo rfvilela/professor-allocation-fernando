@@ -1,6 +1,8 @@
 package com.project.professor.allocation.repository;
 
 import com.project.professor.allocation.entity.Allocation;
+import com.project.professor.allocation.entity.Department;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.List;
+import java.util.Optional;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -27,9 +30,9 @@ public class DepartmentRepositoryTest {
 	@Test
 	public void findAll() {
 		// Act
-
+		List<Department> depto = departmentRepository.findAll();
 		// Print
-
+		System.out.println(depto);
 	}
 
 	@Test
@@ -37,9 +40,10 @@ public class DepartmentRepositoryTest {
 		// Arrange
 
 		// Act
-
+		Optional<Department> optional = departmentRepository.findById(2L);
 		// Print
-
+		Department depto = optional.orElseGet(null);
+		System.out.println(depto);
 	}
 
 	@Test
@@ -65,21 +69,25 @@ public class DepartmentRepositoryTest {
 	@Test
 	public void save_create() throws ParseException {
 		// Arrange
-
+		Department depto = new Department();
+		depto.setName("Area2");
+		
 		// Act
-
+		Department dept = departmentRepository.save(depto);
 		// Print
-
+		System.out.println(dept);
 	}
 
 	@Test
 	public void save_update() throws ParseException {
 		// Arrange
-
+		Department depto = new Department();
+		depto.setId(2L);
+		depto.setName("Cin");
 		// Act
-
+		Department dept = departmentRepository.save(depto);
 		// Print
-
+		System.out.println(dept);
 	}
 
 	@Test
@@ -87,12 +95,12 @@ public class DepartmentRepositoryTest {
 		// Arrange
 
 		// Act
-
+		departmentRepository.deleteById(2L);
 	}
 
 	@Test
 	public void deleteAll() {
 		// Act
-
+		departmentRepository.deleteAllInBatch();
 	}
 }
