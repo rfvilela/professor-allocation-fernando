@@ -35,15 +35,33 @@ public class AllocationService {
 	public Allocation create(Allocation allocation) {
 
 		allocation.setId(null);
-		Allocation allocationNew =  allocationRepository.save(allocation);
+		Allocation allocationNew = allocationRepository.save(allocation);
 		return allocationNew;
 
 	}
 
 	// CRUD: Update
 	public Allocation update(Allocation allocation) {
-		
-		Allocation allocationNew = allocationRepository.save(allocation);
-		return allocationNew;
+
+		Long id = allocation.getId();
+		if (id != null && allocationRepository.existsById(id)) {
+
+			Allocation allocationNew = allocationRepository.save(allocation);
+			return allocationNew;
+		} else {
+			return null;
+		}
 	}
+
+	public void deleteById(Long id) {
+		if (allocationRepository.existsById(id)) {
+			allocationRepository.deleteById(id);
+		}
+	}
+
+	public void deleteAll() {
+
+		allocationRepository.deleteAllInBatch();
+	}
+
 }
