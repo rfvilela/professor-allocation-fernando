@@ -51,13 +51,12 @@ public class AllocationService {
 	}
 
 	private Allocation saveInternal(Allocation allocation) {
-		
-		if(hasCollision(allocation)) {
+
+		if (hasCollision(allocation)) {
 			throw new RuntimeException();
-		}
-		else {
-		Allocation allocationNew = allocationRepository.save(allocation);
-		return allocationNew;
+		} else {
+			Allocation allocationNew = allocationRepository.save(allocation);
+			return allocationNew;
 		}
 	}
 
