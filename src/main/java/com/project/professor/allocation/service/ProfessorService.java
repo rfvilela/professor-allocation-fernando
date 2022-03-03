@@ -48,7 +48,7 @@ public class ProfessorService {
 	}
 
 	public void deleteById(Long id) {
-		if (professorRepository.existsById(id)) {
+		if (id != null && professorRepository.existsById(id)) {
 			professorRepository.deleteById(id);
 		}
 	}

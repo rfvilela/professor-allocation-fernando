@@ -47,7 +47,7 @@ public class DepartmentService {
 	}
 
 	public void deleteById(Long id) {
-		if (departmentRepository.existsById(id)) {
+		if (id != null && departmentRepository.existsById(id)) {
 			departmentRepository.deleteById(id);
 		}
 	}

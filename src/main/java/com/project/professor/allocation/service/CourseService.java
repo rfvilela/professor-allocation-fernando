@@ -50,7 +50,7 @@ public class CourseService {
 		}
 
 		public void deleteById(Long id) {
-			if (courseRepository.existsById(id)) {
+			if (id != null && courseRepository.existsById(id)) {
 				courseRepository.deleteById(id);
 			}
 		}
