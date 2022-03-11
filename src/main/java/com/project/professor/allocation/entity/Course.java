@@ -1,10 +1,18 @@
 package com.project.professor.allocation.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Course {
@@ -14,6 +22,15 @@ public class Course {
 	private Long id;
 	@Column(nullable = false, unique = true)
 	private String name;
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "course")
+    private List<Allocation> allocations;
+
+	public void setAllocations(List<Allocation> allocations) {
+		this.allocations = allocations;
+	}
 
 	public Long getId() {
 		return id;
@@ -30,5 +47,14 @@ public class Course {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	public List<Allocation> getAllocations() {
+		return allocations;
+	}
+	
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

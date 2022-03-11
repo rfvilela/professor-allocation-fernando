@@ -90,7 +90,7 @@ public class AllocationController {
 		allocationService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		
-	}
+	} 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(path = "/allocations/")
 	public ResponseEntity<Void> deleteAll()
