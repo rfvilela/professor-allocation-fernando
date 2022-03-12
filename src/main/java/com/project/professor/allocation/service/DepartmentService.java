@@ -3,9 +3,12 @@ package com.project.professor.allocation.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.project.professor.allocation.entity.Department;
 import com.project.professor.allocation.repository.DepartmentRepository;
 
+@Service
 public class DepartmentService {
 
 	private final DepartmentRepository departmentRepository;
