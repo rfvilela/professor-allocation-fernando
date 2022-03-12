@@ -6,16 +6,23 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.project.professor.allocation.entity.Allocation;
+import com.project.professor.allocation.entity.Course;
+import com.project.professor.allocation.entity.Professor;
 import com.project.professor.allocation.repository.AllocationRepository;
 
 @Service
 public class AllocationService {
 
 	private final AllocationRepository allocationRepository;
+	private final ProfessorService professorService;
+	private final CourseService courseService;
 
-	public AllocationService(AllocationRepository allocationRepository) {
+	public AllocationService(AllocationRepository allocationRepository, ProfessorService professorService,
+			CourseService courseService) {
 		super();
 		this.allocationRepository = allocationRepository;
+		this.professorService = professorService;
+		this.courseService = courseService;
 	}
 
 	// CRUD READ all
@@ -56,6 +63,13 @@ public class AllocationService {
 			throw new RuntimeException();
 		} else {
 			Allocation allocationNew = allocationRepository.save(allocation);
+
+			Professor professor = professorService.findById(allocation.getProfessorId());
+            allocation.setProf(professor);
+
+            Course course = courseService.findById(allocation.getCourseId());
+            allocation.setCurso(course);
+
 			return allocationNew;
 		}
 	}

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.project.professor.allocation.entity.Department;
 import com.project.professor.allocation.entity.Professor;
 import com.project.professor.allocation.repository.ProfessorRepository;
 
@@ -12,10 +13,12 @@ import com.project.professor.allocation.repository.ProfessorRepository;
 public class ProfessorService {
 
 	private final ProfessorRepository professorRepository;
+	private final DepartmentService departmentService;
 
-	public ProfessorService(ProfessorRepository professorRepository) {
+	public ProfessorService(ProfessorRepository professorRepository, DepartmentService departmentService) {
 		super();
 		this.professorRepository = professorRepository;
+		this.departmentService = departmentService;
 	}
 
 	// CRUD READ all
@@ -63,6 +66,10 @@ public class ProfessorService {
 
 	private Professor saveInternal(Professor professor) {
 		Professor professorNew = professorRepository.save(professor);
+		
+		Department department = departmentService.findById(professor.getDepartmentId());
+		professorNew.setDepart(department);
+		
 		return professorNew;
 	}
 
