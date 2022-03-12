@@ -52,7 +52,7 @@ public class AllocationController {
 	}
 
 	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping(path = "/allocations/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/allocations", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Allocation> create(@RequestBody Allocation allocation) {
 
 		try {
@@ -64,7 +64,7 @@ public class AllocationController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@PutMapping(path = "/allocations/{allocation_id}\"", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(path = "/allocations/{allocation_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 
 	public ResponseEntity<Allocation> update(@PathVariable(name = "allocation_id") Long id,
 			@RequestBody Allocation allocation) {
@@ -92,7 +92,7 @@ public class AllocationController {
 		
 	}
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping(path = "/allocations/")
+	@DeleteMapping(path = "/allocations")
 	public ResponseEntity<Void> deleteAll()
 	{
 		allocationService.deleteAll();
