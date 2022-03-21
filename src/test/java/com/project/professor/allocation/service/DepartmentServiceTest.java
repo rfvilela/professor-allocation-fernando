@@ -19,7 +19,7 @@ public class DepartmentServiceTest {
 	@Test
 	public void findAll() {
 		// Act
-		List<Department> department = departmentService.findAll();
+		List<Department> department = departmentService.findAll(null);
 
 		// Print
 		department.forEach(System.out::println);

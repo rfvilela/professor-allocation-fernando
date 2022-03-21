@@ -20,6 +20,7 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(nullable = false, unique = true)
 	private String name;
 	
@@ -27,6 +28,9 @@ public class Course {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "course")
     private List<Allocation> allocations;
+	
+	
+	
 
 	public void setAllocations(List<Allocation> allocations) {
 		this.allocations = allocations;

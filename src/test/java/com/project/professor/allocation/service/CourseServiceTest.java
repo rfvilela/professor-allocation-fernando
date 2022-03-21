@@ -19,7 +19,7 @@ public class CourseServiceTest {
 	@Test
 	public void findAll() {
 		// Act
-		List<Course> courses = courseService.findAll();
+		List<Course> courses = courseService.findAll(null);
 
 		// Print
 		courses.forEach(System.out::println);

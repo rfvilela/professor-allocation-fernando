@@ -3,12 +3,15 @@ package com.project.professor.allocation.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.project.professor.allocation.entity.Allocation;
 import com.project.professor.allocation.entity.Department;
 import com.project.professor.allocation.entity.Professor;
 import com.project.professor.allocation.repository.AllocationRepository;
 import com.project.professor.allocation.repository.ProfessorRepository;
 
+@Service
 public class ProfessorService {
 
 	private final ProfessorRepository professorRepository;
